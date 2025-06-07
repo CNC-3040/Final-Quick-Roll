@@ -1,0 +1,2 @@
+E:/back-up/quick_roll/quick_roll/android/app/.cxx/RelWithDebInfo/2t6l2qu4/x86/CMakeFiles/edit_cache.dir
+E:/back-up/quick_roll/quick_roll/android/app/.cxx/RelWithDebInfo/2t6l2qu4/x86/CMakeFiles/rebuild_cache.dir
