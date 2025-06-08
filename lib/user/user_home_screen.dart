@@ -272,6 +272,7 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:quick_roll/user/time_management_screen.dart';
 import 'package:quick_roll/user/user_id_card.dart';
 import 'package:quick_roll/user/user_intime_scanner.dart';
 import 'package:quick_roll/user/user_login_screen.dart';
@@ -459,7 +460,7 @@ class _HomeScreenState extends State<UserHomeScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    '203',
+                                    '04:14',
                                     style: TextStyle(
                                       fontSize: 24,
                                       fontWeight: FontWeight.bold,
@@ -479,7 +480,7 @@ class _HomeScreenState extends State<UserHomeScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    '08',
+                                    '08:00',
                                     style: TextStyle(
                                       fontSize: 24,
                                       fontWeight: FontWeight.bold,
@@ -543,6 +544,17 @@ class _HomeScreenState extends State<UserHomeScreen> {
                         MaterialPageRoute(
                             builder: (context) =>
                                 const OvertimeEmployeesScreen()),
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    _buildButton(
+                      context,
+                      icon: Icons.access_time,
+                      label: 'Manage Time Entries',
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const TimeManagementScreen()),
                       ),
                     ),
                   ],

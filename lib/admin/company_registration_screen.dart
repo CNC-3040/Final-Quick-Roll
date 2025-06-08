@@ -565,6 +565,8 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController websiteController = TextEditingController();
   final TextEditingController contactController = TextEditingController();
+
+  final TextEditingController WorkingHourController = TextEditingController();
   final TextEditingController gstnController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController categoryController = TextEditingController();
@@ -855,6 +857,25 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                           }
                           if (!RegExp(r'^\d{10,15}$').hasMatch(value)) {
                             return 'Enter a valid 10-15 digit number';
+                          }
+                          return null;
+                        },
+                      ),
+                      _buildTextField(
+                        controller: WorkingHourController,
+                        label: 'Working Hour',
+                        icon: Icons.hourglass_bottom,
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
+                          LengthLimitingTextInputFormatter(15),
+                        ],
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Working hour is required';
+                          }
+                          if (!RegExp(r'^\d{4,4}$').hasMatch(value)) {
+                            return 'Enter a valid 4 digit number';
                           }
                           return null;
                         },
