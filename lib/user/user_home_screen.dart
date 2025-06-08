@@ -401,19 +401,17 @@ class _HomeScreenState extends State<UserHomeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     const SizedBox(height: 30),
-                    // Adding the UI card from the image
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
                         color: const Color(0xFF1565C0),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      height: 140, // 👈 Add fixed height to help Spacer work
+                      height: 140,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          // Left Side (Hotel Name + Status at Bottom)
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: const [
@@ -453,7 +451,6 @@ class _HomeScreenState extends State<UserHomeScreen> {
                               ),
                             ],
                           ),
-                          // Right Side (Verified and Remaining)
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
