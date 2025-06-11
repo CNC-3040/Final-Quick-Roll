@@ -69,6 +69,93 @@
 //     return prefs.getString('loggedInCompanyId');
 //   }
 // }
+
+// import 'dart:convert';
+// import 'package:http/http.dart' as http;
+// import 'package:quick_roll/services/global_API.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
+
+// class AuthService {
+//   static Future<bool> isUserRegistered(
+//       String identifier, String password) async {
+//     final url = Uri.parse('$baseURL/user_login');
+
+//     final response = await http.post(
+//       url,
+//       headers: {"Content-Type": "application/json"},
+//       body: jsonEncode({"identifier": identifier, "password": password}),
+//     );
+
+//     if (response.statusCode == 200) {
+//       final Map<String, dynamic> responseBody = json.decode(response.body);
+//       print('Response: $responseBody');
+
+//       if (responseBody['status'] == 'success') {
+//         final employee = responseBody['data'];
+
+//         SharedPreferences prefs = await SharedPreferences.getInstance();
+//         await prefs.setString('loggedInUserId', employee['id'].toString());
+//         await prefs.setString('loggedInUserEmail', employee['email'] ?? '');
+//         await prefs.setString('loggedInUserContact', employee['contact'] ?? '');
+//         await prefs.setString(
+//             'loggedInUserName', employee['name'] ?? ''); // Save name
+//         await prefs.setString(
+//             'loggedInUserSalary', employee['salary'].toString()); // Save salary
+
+//         if (employee.containsKey('company_id')) {
+//           await prefs.setString(
+//               'loggedInUserCompanyId', employee['company_id'].toString());
+//         } else {
+//           print('Company ID not found in response');
+//         }
+
+//         print('User ID: ${employee['id']}');
+//         print('Email: ${employee['email']}');
+//         print('Contact: ${employee['contact']}');
+//         print('Name: ${employee['name']}');
+//         print('Salary: ${employee['salary']}');
+//         print('Company ID: ${employee['company_id']}');
+
+//         print('User logged in successfully: $employee');
+//         return true;
+//       }
+//     } else {
+//       print('Login failed: ${response.statusCode}, Response: ${response.body}');
+//     }
+//     return false;
+//   }
+
+//   static Future<String?> getLoggedInUserEmail() async {
+//     SharedPreferences prefs = await SharedPreferences.getInstance();
+//     return prefs.getString('loggedInUserEmail');
+//   }
+
+//   static Future<String?> getLoggedInUserContact() async {
+//     SharedPreferences prefs = await SharedPreferences.getInstance();
+//     return prefs.getString('loggedInUserContact');
+//   }
+
+//   static Future<String?> getLoggedInUserId() async {
+//     SharedPreferences prefs = await SharedPreferences.getInstance();
+//     return prefs.getString('loggedInUserId');
+//   }
+
+//   static Future<String?> getLoggedInCompanyId() async {
+//     SharedPreferences prefs = await SharedPreferences.getInstance();
+//     return prefs.getString('loggedInUserCompanyId');
+//   }
+
+//   static Future<String?> getLoggedInUserName() async {
+//     SharedPreferences prefs = await SharedPreferences.getInstance();
+//     return prefs.getString('loggedInUserName');
+//   }
+
+//   static Future<String?> getLoggedInUserSalary() async {
+//     SharedPreferences prefs = await SharedPreferences.getInstance();
+//     return prefs.getString('loggedInUserSalary');
+//   }
+// }
+
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:quick_roll/services/global_API.dart';
@@ -77,7 +164,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AuthService {
   static Future<bool> isUserRegistered(
       String identifier, String password) async {
-    final url = Uri.parse('$baseURL/user_login');
+    final url = Uri.parse('$baseURL/user_login'); // Corrected endpoint
 
     final response = await http.post(
       url,
@@ -96,17 +183,13 @@ class AuthService {
         await prefs.setString('loggedInUserId', employee['id'].toString());
         await prefs.setString('loggedInUserEmail', employee['email'] ?? '');
         await prefs.setString('loggedInUserContact', employee['contact'] ?? '');
+        await prefs.setString('loggedInUserName', employee['name'] ?? '');
         await prefs.setString(
-            'loggedInUserName', employee['name'] ?? ''); // Save name
+            'loggedInUserSalary', employee['salary'].toString());
         await prefs.setString(
-            'loggedInUserSalary', employee['salary'].toString()); // Save salary
-
-        if (employee.containsKey('company_id')) {
-          await prefs.setString(
-              'loggedInUserCompanyId', employee['company_id'].toString());
-        } else {
-          print('Company ID not found in response');
-        }
+            'loggedInUserCompanyId', employee['company_id'].toString());
+        await prefs.setString('loggedInUserCompanyName',
+            employee['company_name'] ?? ''); // Save company_name
 
         print('User ID: ${employee['id']}');
         print('Email: ${employee['email']}');
@@ -114,6 +197,7 @@ class AuthService {
         print('Name: ${employee['name']}');
         print('Salary: ${employee['salary']}');
         print('Company ID: ${employee['company_id']}');
+        print('Company Name: ${employee['company_name']}');
 
         print('User logged in successfully: $employee');
         return true;
@@ -152,5 +236,10 @@ class AuthService {
   static Future<String?> getLoggedInUserSalary() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString('loggedInUserSalary');
+  }
+
+  static Future<String?> getLoggedInUserCompanyName() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('loggedInUserCompanyName');
   }
 }
