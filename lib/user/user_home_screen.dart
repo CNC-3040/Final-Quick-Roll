@@ -663,6 +663,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:quick_roll/admin/user_registration.dart';
 import 'package:quick_roll/user/time_management_screen.dart';
 import 'package:quick_roll/user/user_id_card.dart';
 import 'package:quick_roll/user/user_intime_scanner.dart';
@@ -683,7 +684,7 @@ class UserHomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<UserHomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  String companyName = 'Loading...';
+  String employeeName = 'Loading...';
   String remainingHours = '00:00';
   String requiredHours = '08:00';
   String status = 'not working';
@@ -708,10 +709,10 @@ class _HomeScreenState extends State<UserHomeScreen> {
 
   Future<void> _loadUserData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? savedCompanyName = prefs.getString('loggedInUserCompanyName');
-    if (savedCompanyName != null && savedCompanyName.isNotEmpty) {
+    String? savedEmployeeName = prefs.getString('loggedInUserName');
+    if (savedEmployeeName != null && savedEmployeeName.isNotEmpty) {
       setState(() {
-        companyName = savedCompanyName;
+        employeeName = savedEmployeeName;
       });
     }
   }
@@ -760,7 +761,7 @@ class _HomeScreenState extends State<UserHomeScreen> {
         if (statusResponse.statusCode == 200) {
           final statusData = jsonDecode(statusResponse.body)['data'];
           setState(() {
-            companyName = statusData['company_name'] ?? companyName;
+            // companyName = statusData['company_name'] ?? companyName;
             remainingHours = statusData['remaining_hours'] ?? remainingHours;
             requiredHours = statusData['required_hours'] ?? requiredHours;
             status = statusData['status'] ?? status;
@@ -898,7 +899,7 @@ class _HomeScreenState extends State<UserHomeScreen> {
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF1565C0),
+                        color: const Color(0xFF395191),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       height: 140,
@@ -914,7 +915,7 @@ class _HomeScreenState extends State<UserHomeScreen> {
                                   padding: const EdgeInsets.only(bottom: 8),
                                   child: Center(
                                     child: Text(
-                                      companyName,
+                                      employeeName,
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(
                                         fontSize: 22,
