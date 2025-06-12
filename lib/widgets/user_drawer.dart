@@ -144,32 +144,26 @@ class CustomDrawer extends StatelessWidget {
             SizedBox(
               height: 250,
               child: DrawerHeader(
-                decoration: const BoxDecoration(color: AppColors.softSlateBlue),
+                decoration: const BoxDecoration(color: AppColors.emeraldGreen),
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CircleAvatar(
-                        radius: 45,
-                        backgroundColor: Colors.white,
-                        child: ClipOval(
-                          child: Image.asset(
-                            'assets/image.png',
-                            fit: BoxFit.cover,
-                            width: 90,
-                            height: 90,
-                          ),
-                        ),
+                      Image.asset(
+                        'assets/Artboard_6.png',
+                        // fit: BoxFit.cover,
+                        width: 90,
+                        height: 90,
                       ),
                       const SizedBox(height: 8),
-                      const Text(
-                        'Quick Roll',
-                        style: TextStyle(
-                          color: AppColors.darkNavyBlue,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      // const Text(
+                      //   'Quick Roll',
+                      //   style: TextStyle(
+                      //     color: AppColors.darkNavyBlue,
+                      //     fontSize: 18,
+                      //     fontWeight: FontWeight.bold,
+                      //   ),
+                      // ),
                       const SizedBox(height: 4),
                       const Text(
                         'www.quickroll.com',

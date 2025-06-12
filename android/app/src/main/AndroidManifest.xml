@@ -16,9 +16,9 @@
     
     
     <application
-        android:label="Quick_roll"
+        android:label="Quick roll"
         android:name="${applicationName}"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/ic_launcher">
      
         <activity
             android:name=".MainActivity"

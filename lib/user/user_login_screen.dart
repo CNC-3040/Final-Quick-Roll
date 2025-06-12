@@ -329,12 +329,12 @@ class _UserloginState extends State<Userlogin> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: AppColors.deepSkyBlue,
+      backgroundColor: AppColors.emeraldGreen,
       appBar: AppBar(
-        backgroundColor: AppColors.deepSkyBlue,
+        backgroundColor: AppColors.emeraldGreen,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: AppColors.white),
+          icon: const Icon(Icons.arrow_back, color: AppColors.planeGray),
           onPressed: () {
             Navigator.pushReplacement(
               context,
@@ -343,12 +343,14 @@ class _UserloginState extends State<Userlogin> {
             );
           },
         ),
+        centerTitle: true,
         title: const Text(
           'Login',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            color: AppColors.white,
+            color: AppColors.planeGray,
           ),
+          textAlign: TextAlign.center,
         ),
       ),
       body: Center(
@@ -361,7 +363,7 @@ class _UserloginState extends State<Userlogin> {
                 child: Container(
                   width: size.width * 0.9,
                   decoration: BoxDecoration(
-                    color: AppColors.lightGrayBlue,
+                    color: AppColors.planeGray,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   padding: const EdgeInsets.all(20.0),
@@ -369,77 +371,71 @@ class _UserloginState extends State<Userlogin> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Image.asset(
-                        'assets/imagee.png',
+                        'assets/Artboard_5.png',
                         height: size.height * 0.1,
                       ),
                       const SizedBox(height: 20),
                       const Text(
-                        'Login to Your User Account',
+                        'Login to Your Employee Account',
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
-                          color: AppColors.darkNavyBlue,
+                          color: AppColors.black,
                         ),
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 20),
                       TextField(
                         controller: identifierController,
-                        cursorColor: AppColors.darkNavyBlue,
+                        cursorColor: AppColors.black,
                         inputFormatters: [
                           FilteringTextInputFormatter.deny(RegExp(r'\s')),
                         ],
                         decoration: const InputDecoration(
                           labelText: 'Email or Contact',
-                          labelStyle: TextStyle(color: AppColors.darkNavyBlue),
+                          labelStyle: TextStyle(color: AppColors.black),
                           border: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: AppColors.darkNavyBlue),
+                            borderSide: BorderSide(color: AppColors.black),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: AppColors.darkNavyBlue),
+                            borderSide: BorderSide(color: AppColors.black),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: AppColors.darkNavyBlue, width: 2.0),
+                            borderSide:
+                                BorderSide(color: AppColors.black, width: 2.0),
                           ),
-                          prefixIcon:
-                              Icon(Icons.phone, color: AppColors.darkNavyBlue),
+                          prefixIcon: Icon(Icons.phone, color: AppColors.black),
                         ),
                         keyboardType: TextInputType.text,
                       ),
                       const SizedBox(height: 16),
                       TextField(
                         controller: passwordController,
-                        cursorColor: AppColors.darkNavyBlue,
+                        cursorColor: AppColors.black,
                         inputFormatters: [
                           FilteringTextInputFormatter.deny(RegExp(r'\s')),
                         ],
                         decoration: InputDecoration(
                           labelText: 'Password',
-                          labelStyle:
-                              const TextStyle(color: AppColors.darkNavyBlue),
+                          labelStyle: const TextStyle(color: AppColors.black),
                           border: const OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: AppColors.darkNavyBlue),
+                            borderSide: BorderSide(color: AppColors.black),
                           ),
                           enabledBorder: const OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: AppColors.darkNavyBlue),
+                            borderSide: BorderSide(color: AppColors.black),
                           ),
                           focusedBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: AppColors.darkNavyBlue, width: 2.0),
+                            borderSide:
+                                BorderSide(color: AppColors.black, width: 2.0),
                           ),
-                          prefixIcon: const Icon(Icons.lock,
-                              color: AppColors.darkNavyBlue),
+                          prefixIcon:
+                              const Icon(Icons.lock, color: AppColors.black),
                           suffixIcon: IconButton(
                             icon: Icon(
                               _isPasswordVisible
                                   ? Icons.visibility
                                   : Icons.visibility_off,
-                              color: AppColors.darkNavyBlue,
+                              color: AppColors.black,
                             ),
                             onPressed: () {
                               setState(() {
@@ -455,7 +451,7 @@ class _UserloginState extends State<Userlogin> {
                           ? const CircularProgressIndicator()
                           : ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: AppColors.darkNavyBlue,
+                                backgroundColor: AppColors.black,
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 12, horizontal: 40),
                                 shape: RoundedRectangleBorder(
@@ -466,7 +462,7 @@ class _UserloginState extends State<Userlogin> {
                               child: const Text(
                                 'Login',
                                 style: TextStyle(
-                                  color: AppColors.white,
+                                  color: AppColors.planeGray,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -484,7 +480,7 @@ class _UserloginState extends State<Userlogin> {
                         },
                         child: const Text(
                           'Forgot Password?',
-                          style: TextStyle(color: AppColors.darkNavyBlue),
+                          style: TextStyle(color: AppColors.black),
                         ),
                       ),
                     ],

@@ -17,4 +17,10 @@ class AppColors {
   static const Color iconColor = Color(0xFF395191);
   static const Color textColor = Color(0xFFccc7c5);
   static const Color floatingButtonColor = Color(0xFF6B7DAD);
+
+  static const Color forestGreen = Color(0xFF247337);
+  static const Color emeraldGreen = Color(0xFF35BC52);
+  static const Color oliveGreen = Color(0xFF49693E);
+  static const Color beigeSand = Color(0xFFD9D5C1);
+  static const Color planeGray = Color(0xFFF2F2F2);
 }

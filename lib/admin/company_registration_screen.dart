@@ -672,7 +672,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
       labelStyle: const TextStyle(color: AppColors.charcoalGray),
       prefixIcon: icon != null ? Icon(icon, color: AppColors.slateTeal) : null,
       filled: true,
-      fillColor: AppColors.white.withOpacity(0.1),
+      fillColor: AppColors.planeGray,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
         borderSide: const BorderSide(color: AppColors.slateTeal),
@@ -715,7 +715,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
         inputFormatters: inputFormatters,
         validator: validator,
         style: const TextStyle(color: AppColors.charcoalGray),
-        cursorColor: AppColors.slateTeal,
+        cursorColor: AppColors.oliveGreen,
         maxLines: maxLines,
         obscureText: obscureText,
       ),
@@ -726,24 +726,26 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.skyBlue,
+        backgroundColor: AppColors.oliveGreen,
+        centerTitle: true,
         title: const Text(
           'Company Registration',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            color: AppColors.charcoalGray,
+            color: AppColors.planeGray,
           ),
+          textAlign: TextAlign.left,
         ),
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: AppColors.charcoalGray),
+          icon: const Icon(Icons.arrow_back, color: AppColors.planeGray),
           onPressed: () => Navigator.pop(context),
         ),
       ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [AppColors.white, AppColors.lightSkyBlue],
+            colors: [AppColors.oliveGreen, AppColors.oliveGreen],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -753,7 +755,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
             child: Card(
               elevation: 8,
-              color: AppColors.babyBlue,
+              color: AppColors.planeGray,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
               ),

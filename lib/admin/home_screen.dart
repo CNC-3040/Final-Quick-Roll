@@ -300,7 +300,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.babyBlue,
+        color: AppColors.oliveGreen,
         borderRadius: BorderRadius.circular(12),
       ),
       child: ElevatedButton(
@@ -315,13 +315,13 @@ class _HomeScreenState extends State<HomeScreen> {
         onPressed: onPressed,
         child: Row(
           children: [
-            Icon(icon, size: 25, color: AppColors.charcoalGray),
+            Icon(icon, size: 25, color: AppColors.planeGray),
             const SizedBox(width: 16),
             Text(
               label,
               style: const TextStyle(
                 fontSize: 15,
-                color: AppColors.charcoalGray,
+                color: AppColors.planeGray,
               ),
             ),
             const Spacer(),
@@ -350,20 +350,20 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.planeGray,
       appBar: AppBar(
-        backgroundColor: AppColors.skyBlue,
+        backgroundColor: AppColors.oliveGreen,
         title: const Text(
-          'QUICK ROLL',
+          'QR Administrator',
           style: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.bold,
-            color: AppColors.charcoalGray,
+            color: AppColors.planeGray,
           ),
         ),
         centerTitle: true,
         leading: IconButton(
-          icon: const Icon(Icons.menu, size: 28, color: AppColors.charcoalGray),
+          icon: const Icon(Icons.menu, size: 28, color: AppColors.planeGray),
           onPressed: () {
             if (_scaffoldKey.currentState != null) {
               _scaffoldKey.currentState!.openDrawer();
@@ -471,6 +471,98 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             )
           : const Center(child: Text('Other Pages')),
+      // Move bottomNavigationBar here, as a property of Scaffold
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (index) {
+          switch (index) {
+            case 0:
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const HomeScreen()),
+              );
+              break;
+            case 1:
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const DashboardScreen()),
+              );
+              break;
+            case 2:
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ContactScreen()),
+              );
+              break;
+          }
+        },
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: AppColors.forestGreen,
+        selectedItemColor: AppColors.beigeSand,
+        unselectedItemColor: AppColors.planeGray,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.update),
+            label: 'Update',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.support_agent),
+            label: 'Support',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class DashboardScreen extends StatelessWidget {
+  const DashboardScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Dashboard'),
+        backgroundColor: AppColors.forestGreen,
+      ),
+      body: const Center(
+          child: Text('Dashboard Screen', style: TextStyle(fontSize: 20))),
+    );
+  }
+}
+
+class AdminScreen extends StatelessWidget {
+  const AdminScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Admin'),
+        backgroundColor: AppColors.forestGreen,
+      ),
+      body: const Center(
+          child: Text('Admin Screen', style: TextStyle(fontSize: 20))),
+    );
+  }
+}
+
+class ContactScreen extends StatelessWidget {
+  const ContactScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Contact'),
+        backgroundColor: AppColors.forestGreen,
+      ),
+      body: const Center(
+          child: Text('Contact Screen', style: TextStyle(fontSize: 20))),
     );
   }
 }

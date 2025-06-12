@@ -74,10 +74,11 @@ class _AdminLoginState extends State<LoginScreen> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: AppColors.slateTeal,
+      backgroundColor: AppColors.forestGreen,
       appBar: AppBar(
-        backgroundColor: AppColors.slateTeal,
+        backgroundColor: AppColors.forestGreen,
         elevation: 0,
+        centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: AppColors.white),
           onPressed: () {
@@ -88,12 +89,13 @@ class _AdminLoginState extends State<LoginScreen> {
             );
           },
         ),
-        title: const Text(
-          'Login',
+        title: Text(
+          'Administrator login',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: AppColors.white,
           ),
+          textAlign: TextAlign.center,
         ),
       ),
       body: Center(
@@ -106,7 +108,7 @@ class _AdminLoginState extends State<LoginScreen> {
                 child: Container(
                   width: size.width * 0.9,
                   decoration: BoxDecoration(
-                    color: AppColors.babyBlue,
+                    color: AppColors.planeGray,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   padding: const EdgeInsets.all(20.0),
@@ -114,7 +116,7 @@ class _AdminLoginState extends State<LoginScreen> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Image.asset(
-                        'assets/imagee.png',
+                        'assets/Artboard_16_copy.png',
                         height: size.height * 0.1,
                       ),
                       const SizedBox(height: 20),
@@ -123,7 +125,7 @@ class _AdminLoginState extends State<LoginScreen> {
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
-                          color: AppColors.charcoalGray,
+                          color: AppColors.forestGreen,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -200,7 +202,7 @@ class _AdminLoginState extends State<LoginScreen> {
                           ? const CircularProgressIndicator()
                           : ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: AppColors.charcoalGray,
+                                backgroundColor: AppColors.forestGreen,
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 12, horizontal: 40),
                                 shape: RoundedRectangleBorder(
@@ -236,7 +238,7 @@ class _AdminLoginState extends State<LoginScreen> {
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors
-                              .charcoalGray, // Change background color to charcoalGray
+                              .forestGreen, // Change background color to charcoalGray
                           padding: const EdgeInsets.symmetric(
                               vertical: 12, horizontal: 40),
                           shape: RoundedRectangleBorder(

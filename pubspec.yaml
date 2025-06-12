@@ -68,10 +68,10 @@ dev_dependencies:
     sdk: flutter
   flutter_launcher_icons: ^0.14.3
 
-flutter_launcher_icons:
-  android: "launcher_icon"
+flutter_icons:
+  android: true
   ios: true
-  image_path: "assets/imagee.png"
+  image_path: "assets/Artboard_2_copy.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -93,10 +93,18 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/imagee.png
+    - assets/Artboard_2_copy.png
+#    - assets/imagee.png
     - assets/image.png
     - assets/QuickRoll.icon.png
     - assets/compony_logo.png
+    - assets/Artboard_2.png
+    - assets/Artboard_6.png
+    - assets/Artboard_6_copy.png
+    - assets/Artboard_5_copy_2.png
+    - assets/Artboard_16_copy.png
+    - assets/Artboard_5.png
+    - assets/Artboard_16.png
     
     - assets/image1.jpg
     - assets/image2.png
