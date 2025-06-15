@@ -250,8 +250,10 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:quick_roll/admin/admin_login.dart';
 import 'package:quick_roll/admin/employees_list.dart';
+import 'package:quick_roll/user/email_sender.dart';
 import 'package:quick_roll/utils/admin_colors.dart';
 import 'package:quick_roll/widgets/admin_drawer.dart';
+import 'company_leave_management.dart';
 import 'id_card_screen.dart';
 import 'salary_slip_screen.dart';
 import 'weekly_summary_screen.dart';
@@ -461,6 +463,27 @@ class _HomeScreenState extends State<HomeScreen> {
                               MaterialPageRoute(
                                   builder: (context) =>
                                       const QRCodeGenerateScreen()),
+                            ),
+                          ),
+                          _buildButton(context,
+                              icon: Icons.timelapse,
+                              label: 'Overtime Employees', onPressed: () async {
+                            await EmailSender.sendEmail(
+                              recipientEmail: 'sudarshan.gavas@gmail.com',
+                              subject: 'Howdy!',
+                              body: 'Hello from QuickRoll app.',
+                            );
+                          }),
+                          const SizedBox(height: 16),
+                          _buildButton(
+                            context,
+                            icon: Icons.qr_code,
+                            label: 'Employee Leaves',
+                            onPressed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                  const CompanyLeaveManagementScreen()),
                             ),
                           ),
                         ],

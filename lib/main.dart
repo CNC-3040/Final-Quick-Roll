@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quick_roll/core/splash_screen.dart';
 
-void main() {
+Future<void> main() async {
   runApp(const MyApp());
 }
 
