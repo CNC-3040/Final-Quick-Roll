@@ -254,6 +254,7 @@ import 'package:flutter/services.dart';
 import 'package:quick_roll/core/forgot_password_screen.dart';
 import 'package:quick_roll/core/role_selection_screen.dart';
 import 'package:quick_roll/core/splash_screen.dart';
+import 'package:quick_roll/user/employee_password_change_screen.dart';
 import 'package:quick_roll/user/user_auth_service.dart';
 import 'package:quick_roll/utils/user_colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -475,7 +476,7 @@ class _UserloginState extends State<Userlogin> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    const OtpVerificationScreen()),
+                                    const EmployeePasswordChangeScreen()),
                           );
                         },
                         child: const Text(

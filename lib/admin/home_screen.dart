@@ -465,6 +465,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       const QRCodeGenerateScreen()),
                             ),
                           ),
+                          const SizedBox(height: 16),
                           _buildButton(context,
                               icon: Icons.timelapse,
                               label: 'Overtime Employees', onPressed: () async {
@@ -483,7 +484,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                  const CompanyLeaveManagementScreen()),
+                                      const CompanyLeaveManagementScreen()),
                             ),
                           ),
                         ],

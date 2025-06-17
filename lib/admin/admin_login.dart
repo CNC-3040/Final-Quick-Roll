@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:quick_roll/admin/company_password_change_screen.dart';
 import 'package:quick_roll/admin/company_registration_screen.dart';
 import 'package:quick_roll/core/role_selection_screen.dart';
 import 'package:quick_roll/admin/auth_service.dart';
@@ -226,7 +227,7 @@ class _AdminLoginState extends State<LoginScreen> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    const OtpVerificationScreen()),
+                                    const CompanyPasswordChangeScreen()),
                           );
                         },
                         child: const Text(

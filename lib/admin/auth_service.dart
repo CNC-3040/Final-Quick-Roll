@@ -61,6 +61,7 @@
 //     return prefs.getString('loggedInUserId');
 //   }
 // }
+
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:quick_roll/services/global.dart';
@@ -89,8 +90,10 @@ class AuthService {
         await prefs.setString('loggedInUserId', admin['id'].toString());
         await prefs.setString('loggedInUserEmail', admin['email_id'] ?? '');
         await prefs.setString('loggedInUserContact', admin['user_name'] ?? '');
-        await prefs.setString('loggedInUserCompanyId', admin['id'].toString()); // Store company_id
-        await prefs.setString('companyData', jsonEncode(responseBody)); // Save entire response
+        await prefs.setString('loggedInUserCompanyId',
+            admin['id'].toString()); // Store company_id
+        await prefs.setString(
+            'companyData', jsonEncode(responseBody)); // Save entire response
 
         global_cid = admin['id'];
         print('company id= $global_cid');
