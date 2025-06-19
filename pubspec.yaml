@@ -69,11 +69,18 @@ dependencies:
   encrypt: ^5.0.3
   base32: ^2.1.3
   image_cropper: ^9.1.0
+  dropdown_search: ^5.0.6
+  provider: ^6.1.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.14.3
+
+fonts:
+  - family: Poppins
+    fonts:
+      - asset: assets/fonts/Poppins/Poppins-Regular.ttf
 
 flutter_icons:
   android: true
@@ -112,6 +119,7 @@ flutter:
     - assets/Artboard_16_copy.png
     - assets/Artboard_5.png
     - assets/Artboard_16.png
+    - assets/Artboard_84.png
     
     - assets/image1.jpg
     - assets/image2.png

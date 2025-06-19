@@ -85,8 +85,7 @@ class _AdminLoginState extends State<LoginScreen> {
           onPressed: () {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(
-                  builder: (context) => const RoleSelectionScreen()),
+              MaterialPageRoute(builder: (context) => RoleSelectionScreen()),
             );
           },
         ),
@@ -238,8 +237,7 @@ class _AdminLoginState extends State<LoginScreen> {
                       const SizedBox(height: 16),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors
-                              .forestGreen, // Change background color to charcoalGray
+                          backgroundColor: AppColors.forestGreen,
                           padding: const EdgeInsets.symmetric(
                               vertical: 12, horizontal: 40),
                           shape: RoundedRectangleBorder(
@@ -250,15 +248,15 @@ class _AdminLoginState extends State<LoginScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => CompanyRegistrationScreen(),
+                              builder: (context) => BusinessNameScreen(),
                             ),
                           );
                         },
                         child: const Text(
                           'New Company Registration',
                           style: TextStyle(
-                              color: AppColors
-                                  .white), // Change text color to white
+                            color: AppColors.white,
+                          ),
                         ),
                       ),
                     ],

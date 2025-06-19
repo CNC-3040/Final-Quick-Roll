@@ -341,7 +341,8 @@ class _HomeScreenState extends State<UserHomeScreen> {
                       onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const EmployeeLeaveRequestScreen()),
+                            builder: (context) =>
+                                const EmployeeLeaveRequestScreen()),
                       ),
                     ),
                     const SizedBox(height: 16),

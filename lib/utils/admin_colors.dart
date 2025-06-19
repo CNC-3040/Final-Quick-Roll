@@ -30,4 +30,7 @@ class AppColors {
   static const Color oliveGreen = Color(0xFF49693E);
   static const Color beigeSand = Color(0xFFD9D5C1);
   static const Color planeGray = Color(0xFFF2F2F2);
+
+  static const Color deepTeal = Color(0xFF024653);
+  static const Color myTeal = Color(0xFF01E083);
 }
