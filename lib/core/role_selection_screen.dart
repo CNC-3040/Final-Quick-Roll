@@ -348,30 +348,34 @@ class RoleSelectionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final height = size.height;
+    final width = size.width;
+
     return Scaffold(
-      backgroundColor: const Color(0xFFF9F9F9),
+      backgroundColor: AppColors.planeGray,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          padding: EdgeInsets.symmetric(horizontal: width * 0.05),
           child: Column(
             children: [
-              const Spacer(),
+              SizedBox(
+                  height: height * 0.20), // Instead of Spacer for top spacing
               // Logo Image
               Image.asset(
                 'assets/Artboard_5.png',
-                height: size.height * 0.15,
+                height: height * 0.21,
               ),
-              const SizedBox(height: 70),
+              SizedBox(height: height * 0.07),
               // "Sign Up As," text
               Text(
                 'Sign Up As,',
                 style: GoogleFonts.poppins(
-                  fontSize: 30,
+                  fontSize: height * 0.035, // Around 30 on typical device
                   fontWeight: FontWeight.w300,
                   color: AppColors.myTeal,
                 ),
               ),
-              const SizedBox(height: 30),
+              SizedBox(height: height * 0.02),
               // Employee Button
               CustomRoleButton(
                 text: 'Employee',
@@ -381,7 +385,7 @@ class RoleSelectionScreen extends StatelessWidget {
                   builder: (context) => const Userlogin(),
                 ),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: height * 0.015),
               // Business Button
               CustomRoleButton(
                 text: 'Business',
@@ -391,30 +395,29 @@ class RoleSelectionScreen extends StatelessWidget {
                   builder: (context) => const BusinessNameScreen(),
                 ),
               ),
-              const SizedBox(height: 15),
+              SizedBox(height: height * 0.01),
               // Already have an account text
               Text(
                 'Already have an account?',
                 style: GoogleFonts.poppins(
-                  fontSize: 15,
+                  fontSize: height * 0.018, // ~15 on standard device
                   fontWeight: FontWeight.w400,
                   color: AppColors.myTeal,
                 ),
               ),
-              const SizedBox(height: 15),
+              SizedBox(height: height * 0.01),
               // Login Button (Outline)
               CustomRoleButton(
                 text: 'Login',
                 backgroundColor: Colors.transparent,
                 textColor: AppColors.myTeal,
                 nextScreen: NoAnimationPageRoute(
-                  builder: (context) =>
-                      const LoginScreen(), // Changed to AdminLogin
+                  builder: (context) => const LoginScreen(),
                 ),
                 isOutlined: true,
                 borderColor: AppColors.myTeal,
               ),
-              SizedBox(height: size.height * 0.03),
+              SizedBox(height: height * 0.03),
             ],
           ),
         ),

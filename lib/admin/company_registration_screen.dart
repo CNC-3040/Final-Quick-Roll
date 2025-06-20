@@ -3616,7 +3616,7 @@ class BusinessNameScreen extends StatelessWidget {
                     "Sign Up As,",
                     style: GoogleFonts.poppins(
                       fontSize: 30,
-                      fontWeight: FontWeight.w300,
+                      fontWeight: FontWeight.w200,
                       color: const Color(0xFF024653),
                     ),
                     textAlign: TextAlign.center,
@@ -3625,7 +3625,7 @@ class BusinessNameScreen extends StatelessWidget {
                     "Business",
                     style: GoogleFonts.poppins(
                       fontSize: 30,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w400,
                       color: const Color(0xFF024653),
                     ),
                     textAlign: TextAlign.center,
@@ -3662,8 +3662,12 @@ class BusinessNameScreen extends StatelessWidget {
                 },
                 child: const CircleAvatar(
                   backgroundColor: Color(0xFF024653),
-                  radius: 30,
-                  child: Icon(Icons.arrow_forward, color: Colors.white),
+                  radius: 40,
+                  child: Icon(
+                    Icons.arrow_forward,
+                    color: Colors.white,
+                    size: 50,
+                  ),
                 ),
               ),
             ),
@@ -3713,7 +3717,7 @@ class BusinessCategoryScreen extends StatelessWidget {
                     "Category Of Your",
                     style: GoogleFonts.poppins(
                       fontSize: 30,
-                      fontWeight: FontWeight.w300,
+                      fontWeight: FontWeight.w200,
                       color: const Color(0xFF024653),
                     ),
                     textAlign: TextAlign.center,
@@ -3722,7 +3726,7 @@ class BusinessCategoryScreen extends StatelessWidget {
                     "Business?",
                     style: GoogleFonts.poppins(
                       fontSize: 30,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w400,
                       color: const Color(0xFF024653),
                     ),
                     textAlign: TextAlign.center,
@@ -3766,8 +3770,12 @@ class BusinessCategoryScreen extends StatelessWidget {
                 },
                 child: const CircleAvatar(
                   backgroundColor: Color(0xFF024653),
-                  radius: 30,
-                  child: Icon(Icons.arrow_forward, color: Colors.white),
+                  radius: 40,
+                  child: Icon(
+                    Icons.arrow_forward,
+                    color: Colors.white,
+                    size: 50,
+                  ),
                 ),
               ),
             ),
@@ -3817,7 +3825,7 @@ class VerifyScreen extends StatelessWidget {
                     "Welcome",
                     style: GoogleFonts.poppins(
                       fontSize: 30,
-                      fontWeight: FontWeight.w300,
+                      fontWeight: FontWeight.w200,
                       color: const Color(0xFF024653),
                     ),
                     textAlign: TextAlign.center,
@@ -3828,7 +3836,7 @@ class VerifyScreen extends StatelessWidget {
                         : signupModel.userName,
                     style: GoogleFonts.poppins(
                       fontSize: 30,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w400,
                       color: const Color(0xFF024653),
                     ),
                     textAlign: TextAlign.center,
@@ -3879,8 +3887,12 @@ class VerifyScreen extends StatelessWidget {
                 },
                 child: const CircleAvatar(
                   backgroundColor: Color(0xFF024653),
-                  radius: 30,
-                  child: Icon(Icons.arrow_forward, color: Colors.white),
+                  radius: 40,
+                  child: Icon(
+                    Icons.arrow_forward,
+                    color: Colors.white,
+                    size: 50,
+                  ),
                 ),
               ),
             ),
@@ -3930,7 +3942,7 @@ class PasswordSetupScreen extends StatelessWidget {
                     "Security",
                     style: GoogleFonts.poppins(
                       fontSize: 30,
-                      fontWeight: FontWeight.w300,
+                      fontWeight: FontWeight.w200,
                       color: const Color(0xFF024653),
                     ),
                     textAlign: TextAlign.center,
@@ -3939,7 +3951,7 @@ class PasswordSetupScreen extends StatelessWidget {
                     "Is Important !",
                     style: GoogleFonts.poppins(
                       fontSize: 30,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w400,
                       color: const Color(0xFF024653),
                     ),
                     textAlign: TextAlign.center,
@@ -3975,15 +3987,18 @@ class PasswordSetupScreen extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: size.height * 0.53,
-              right: 30,
-              child: RoundedTextBox(
-                hint: "Remember me",
-                isCheckbox: true,
-                checkboxLabel: "Remember me",
-                onCheckboxChanged: (value) {
-                  // Handle remember me state if needed
-                },
+              top: size.height * 0.51,
+              left: 0,
+              right: 0,
+              child: Center(
+                child: RoundedTextBox(
+                  hint: "Remember me",
+                  isCheckbox: true,
+                  checkboxLabel: "Remember me",
+                  onCheckboxChanged: (value) {
+                    // Handle remember me state if needed
+                  },
+                ),
               ),
             ),
             Positioned(
@@ -4003,8 +4018,12 @@ class PasswordSetupScreen extends StatelessWidget {
                 },
                 child: const CircleAvatar(
                   backgroundColor: Color(0xFF024653),
-                  radius: 30,
-                  child: Icon(Icons.arrow_forward, color: Colors.white),
+                  radius: 40,
+                  child: Icon(
+                    Icons.arrow_forward,
+                    color: Colors.white,
+                    size: 50,
+                  ),
                 ),
               ),
             ),
@@ -4054,7 +4073,7 @@ class OwnerNameScreen extends StatelessWidget {
                     "Who's",
                     style: GoogleFonts.poppins(
                       fontSize: 30,
-                      fontWeight: FontWeight.w300,
+                      fontWeight: FontWeight.w200,
                       color: const Color(0xFF024653),
                     ),
                     textAlign: TextAlign.center,
@@ -4063,7 +4082,7 @@ class OwnerNameScreen extends StatelessWidget {
                     "In Charge?",
                     style: GoogleFonts.poppins(
                       fontSize: 30,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w400,
                       color: const Color(0xFF024653),
                     ),
                     textAlign: TextAlign.center,
@@ -4124,8 +4143,12 @@ class OwnerNameScreen extends StatelessWidget {
                 },
                 child: const CircleAvatar(
                   backgroundColor: Color(0xFF024653),
-                  radius: 30,
-                  child: Icon(Icons.arrow_forward, color: Colors.white),
+                  radius: 40,
+                  child: Icon(
+                    Icons.arrow_forward,
+                    color: Colors.white,
+                    size: 50,
+                  ),
                 ),
               ),
             ),
@@ -4175,7 +4198,7 @@ class BusinessLocationScreen extends StatelessWidget {
                     "Location of",
                     style: GoogleFonts.poppins(
                       fontSize: 30,
-                      fontWeight: FontWeight.w300,
+                      fontWeight: FontWeight.w200,
                       color: const Color(0xFF024653),
                     ),
                     textAlign: TextAlign.center,
@@ -4184,7 +4207,7 @@ class BusinessLocationScreen extends StatelessWidget {
                     "Business?",
                     style: GoogleFonts.poppins(
                       fontSize: 30,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w400,
                       color: const Color(0xFF024653),
                     ),
                     textAlign: TextAlign.center,
@@ -4245,8 +4268,12 @@ class BusinessLocationScreen extends StatelessWidget {
                 },
                 child: const CircleAvatar(
                   backgroundColor: Color(0xFF024653),
-                  radius: 30,
-                  child: Icon(Icons.arrow_forward, color: Colors.white),
+                  radius: 40,
+                  child: Icon(
+                    Icons.arrow_forward,
+                    color: Colors.white,
+                    size: 50,
+                  ),
                 ),
               ),
             ),
@@ -4296,7 +4323,7 @@ class WebsiteScreen extends StatelessWidget {
                     "Customer",
                     style: GoogleFonts.poppins(
                       fontSize: 30,
-                      fontWeight: FontWeight.w300,
+                      fontWeight: FontWeight.w200,
                       color: const Color(0xFF024653),
                     ),
                     textAlign: TextAlign.center,
@@ -4305,7 +4332,7 @@ class WebsiteScreen extends StatelessWidget {
                     "Website?",
                     style: GoogleFonts.poppins(
                       fontSize: 30,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w400,
                       color: const Color(0xFF024653),
                     ),
                     textAlign: TextAlign.center,
@@ -4366,8 +4393,12 @@ class WebsiteScreen extends StatelessWidget {
                 },
                 child: const CircleAvatar(
                   backgroundColor: Color(0xFF024653),
-                  radius: 30,
-                  child: Icon(Icons.arrow_forward, color: Colors.white),
+                  radius: 40,
+                  child: Icon(
+                    Icons.arrow_forward,
+                    color: Colors.white,
+                    size: 50,
+                  ),
                 ),
               ),
             ),
@@ -4410,8 +4441,8 @@ class RegistrationSuccessScreen extends StatelessWidget {
                   Text(
                     "Registration",
                     style: GoogleFonts.poppins(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w300,
+                      fontSize: 35,
+                      fontWeight: FontWeight.w200,
                       color: const Color(0xFF024653),
                     ),
                     textAlign: TextAlign.center,
@@ -4420,7 +4451,7 @@ class RegistrationSuccessScreen extends StatelessWidget {
                     "Successful",
                     style: GoogleFonts.poppins(
                       fontSize: 30,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w400,
                       color: const Color(0xFF024653),
                     ),
                     textAlign: TextAlign.center,
@@ -4485,7 +4516,7 @@ class RegistrationSuccessScreen extends StatelessWidget {
                             "Finish",
                             style: GoogleFonts.poppins(
                               fontSize: 25,
-                              color: Colors.white,
+                              color: const Color(0xFF01E083),
                             ),
                           ),
                         ),

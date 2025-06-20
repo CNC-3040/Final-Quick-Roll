@@ -136,7 +136,7 @@ class CustomRoleButton<T> extends StatelessWidget {
               text,
               style: GoogleFonts.poppins(
                 fontSize: 25,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w300,
               ),
             ),
           )
@@ -149,7 +149,7 @@ class CustomRoleButton<T> extends StatelessWidget {
               text,
               style: GoogleFonts.poppins(
                 fontSize: 25,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w300,
               ),
             ),
           );

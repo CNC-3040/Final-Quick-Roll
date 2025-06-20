@@ -298,7 +298,7 @@ class _RoundedTextBoxState extends State<RoundedTextBox> {
           Text(
             widget.checkboxLabel ?? "",
             style: GoogleFonts.poppins(
-              fontSize: 16,
+              fontSize: 18,
               color: const Color(0xFF024653),
             ),
           ),
