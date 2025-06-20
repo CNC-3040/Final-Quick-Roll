@@ -33,4 +33,7 @@ class AppColors {
 
   static const Color deepTeal = Color(0xFF024653);
   static const Color myTeal = Color(0xFF01E083);
+  static const Color LightMistGray = Color(0xFFE2EAEC);
+  static const Color SteelTeal = Color(0xFF336870);
+  static const Color MutedTeal = Color(0xFF73979B);
 }
