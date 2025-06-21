@@ -17,9 +17,37 @@
 //   }
 // }
 
+// import 'package:flutter/material.dart';
+// import 'package:provider/provider.dart';
+// import 'model/signup_form_model.dart';
+// import 'core/splash_screen.dart';
+
+// void main() {
+//   runApp(const MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return ChangeNotifierProvider(
+//       create: (_) => SignupFormModel(),
+//       child: MaterialApp(
+//         title: 'Quick Roll',
+//         debugShowCheckedModeBanner: false,
+//         theme: ThemeData(
+//           primarySwatch: Colors.blue,
+//         ),
+//         home: const SplashScreen(),
+//       ),
+//     );
+//   }
+// }
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'model/signup_form_model.dart';
+import 'model/employee_signup_model.dart'; // Add this import
 import 'core/splash_screen.dart';
 
 void main() {
@@ -31,8 +59,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => SignupFormModel(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => SignupFormModel()),
+        ChangeNotifierProvider(
+            create: (_) =>
+                EmployeeSignupModel()), // Add provider for employee model
+      ],
       child: MaterialApp(
         title: 'Quick Roll',
         debugShowCheckedModeBanner: false,

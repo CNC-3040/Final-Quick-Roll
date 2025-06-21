@@ -17,6 +17,7 @@ class AppColors {
   static const Color iconColor = Color(0xFF395191);
   static const Color textColor = Color(0xFFccc7c5);
   static const Color floatingButtonColor = Color(0xFF6B7DAD);
+  static const errorRed = Color(0xFFE57373);
 
   static const Color forestGreen = Color(0xFF247337);
   static const Color emeraldGreen = Color(0xFF35BC52);
@@ -26,4 +27,7 @@ class AppColors {
 
   static const Color deepTeal = Color(0xFF024653);
   static const Color myTeal = Color(0xFF01E083);
+  static const Color LightMistGray = Color(0xFFF2F2F2);
+  static const Color SteelTeal = Color(0xFF01E083);
+  static const Color MutedTeal = Color(0xFF97dbbc);
 }

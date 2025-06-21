@@ -617,6 +617,7 @@
 
 import 'dart:typed_data';
 import 'dart:convert';
+import 'package:quick_roll/admin/employee_signup_flow.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -972,7 +973,7 @@ class _ViewEmployeesPageState extends State<ViewEmployeesPage> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => RegistrationScreen()),
+            MaterialPageRoute(builder: (context) => const EmployeeSignupFlow()),
           ).then((_) => fetchEmployees());
         },
         child: const Icon(Icons.add),

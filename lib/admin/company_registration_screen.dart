@@ -3080,6 +3080,7 @@
 //           '${word[0].toUpperCase()}${word.substring(1).toLowerCase()}')
 //       .join(' ');
 // }
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -3111,6 +3112,7 @@ class BusinessNameScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.LightMistGray,
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Stack(
           children: [
@@ -3206,6 +3208,7 @@ class BusinessCategoryScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.LightMistGray,
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Stack(
           children: [
@@ -3319,6 +3322,7 @@ class VerifyScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.LightMistGray,
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Stack(
           children: [
@@ -3444,6 +3448,7 @@ class PasswordSetupScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.LightMistGray,
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Stack(
           children: [
@@ -3593,6 +3598,7 @@ class OwnerNameScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.LightMistGray,
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Stack(
           children: [
@@ -3726,6 +3732,7 @@ class BusinessLocationScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.LightMistGray,
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Stack(
           children: [
@@ -3859,6 +3866,7 @@ class WebsiteScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.LightMistGray,
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Stack(
           children: [
