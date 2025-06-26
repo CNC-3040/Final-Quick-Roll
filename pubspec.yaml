@@ -71,6 +71,7 @@ dependencies:
   image_cropper: ^9.1.0
   dropdown_search: ^5.0.6
   provider: ^6.1.5
+  workmanager: ^0.7.0
 
 dev_dependencies:
   flutter_test:
