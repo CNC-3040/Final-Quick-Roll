@@ -1,0 +1,2 @@
+E:/back-up/quick_roll - Copy/Quick_Roll/android/app/.cxx/Debug/282b5z4i/armeabi-v7a/CMakeFiles/edit_cache.dir
+E:/back-up/quick_roll - Copy/Quick_Roll/android/app/.cxx/Debug/282b5z4i/armeabi-v7a/CMakeFiles/rebuild_cache.dir

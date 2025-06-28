@@ -21,6 +21,11 @@ String global_gstn = "";
 String global_password = "";
 String global_category = "";
 String global_address = "";
+double globalLatitude = 0.0;
+double globalLongitude = 0.0;
+bool global_IsWorking = false;
+String global_intimeDate = "";
+String global_intimeTime = "";
 
 // Save global_cid to SharedPreferences
 Future<void> saveGlobalCID(int cid) async {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
 import 'package:workmanager/workmanager.dart';
 
@@ -10,14 +11,36 @@ import 'services/background_location_task.dart'; // Ensure callbackDispatcher is
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize WorkManager with the background callback
+  // ✅ Check and request location permission
+  LocationPermission permission = await Geolocator.checkPermission();
+
+  if (permission == LocationPermission.denied) {
+    permission = await Geolocator.requestPermission();
+  }
+
+  if (permission == LocationPermission.deniedForever ||
+      permission == LocationPermission.whileInUse) {
+    // Open settings if permission is permanently denied or not suitable
+    await Geolocator.openAppSettings();
+    return;
+  }
+
+  // ✅ Initialize WorkManager with periodic task
   await Workmanager().initialize(
     callbackDispatcher,
-    isInDebugMode: true, // Set to false for production
+    isInDebugMode: true, // Set to false in production
   );
 
-  // Register periodic background task
-  await initializeBackgroundLocationTask();
+  // ✅ Register periodic background task (every 15 minutes)
+  await Workmanager().registerPeriodicTask(
+    "periodic-location-task-id", // Must be unique
+    fetchBackgroundTask,
+    frequency: const Duration(minutes: 15), // Min allowed by Android
+    initialDelay: const Duration(seconds: 10),
+    constraints: Constraints(
+      networkType: NetworkType.connected,
+    ),
+  );
 
   runApp(const MyApp());
 }
