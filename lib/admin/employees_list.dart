@@ -643,12 +643,12 @@ class _ViewEmployeesPageState extends State<ViewEmployeesPage> {
   String? _errorMessage;
 
   Future<void> _loadCompanyIdIfNeeded() async {
-    if (globalService.global_cid == null ||
-        globalService.global_cid.toString().isEmpty) {
+    if (globalService.globalCid == null ||
+        globalService.globalCid.toString().isEmpty) {
       final prefs = await SharedPreferences.getInstance();
       final savedCid = prefs.getString('company_id');
       if (savedCid != null && savedCid.isNotEmpty) {
-        globalService.global_cid = int.parse(savedCid);
+        globalService.globalCid = int.parse(savedCid);
       }
     }
   }
@@ -661,11 +661,10 @@ class _ViewEmployeesPageState extends State<ViewEmployeesPage> {
 
     try {
       // Save company_id to SharedPreferences if available
-      if (globalService.global_cid != null &&
-          globalService.global_cid.toString().isNotEmpty) {
+      if (globalService.globalCid != null &&
+          globalService.globalCid.toString().isNotEmpty) {
         final prefs = await SharedPreferences.getInstance();
-        await prefs.setString(
-            'company_id', globalService.global_cid.toString());
+        await prefs.setString('company_id', globalService.globalCid.toString());
       } else {
         setState(() {
           _errorMessage = 'Company ID is not set';
@@ -675,7 +674,7 @@ class _ViewEmployeesPageState extends State<ViewEmployeesPage> {
       }
 
       final response = await http.get(
-        Uri.parse('${baseURL}/employees/${globalService.global_cid}'),
+        Uri.parse('${baseURL}/employees/${globalService.globalCid}'),
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',

@@ -1334,9 +1334,9 @@ class _IDCardScreenState extends State<IDCardScreen> {
   }
 
   Future<void> _fetchEmployees() async {
-    if (isLoading || global_cid == null) {
+    if (isLoading || globalCid == null) {
       setState(() {
-        _errorMessage = global_cid == null ? 'Company ID is not set' : null;
+        _errorMessage = globalCid == null ? 'Company ID is not set' : null;
         isLoading = false;
       });
       return;
@@ -1349,9 +1349,9 @@ class _IDCardScreenState extends State<IDCardScreen> {
 
     try {
       final url =
-          Uri.parse('$baseURL/employees/$global_cid?page=$page&limit=$limit');
+          Uri.parse('$baseURL/employees/$globalCid?page=$page&limit=$limit');
       debugPrint(
-          '📤 Fetching employees for company_id: $global_cid, page: $page');
+          '📤 Fetching employees for company_id: $globalCid, page: $page');
       final response = await http.get(url, headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',

@@ -737,8 +737,8 @@ class Employee {
       companyId: json['company_id'] != null
           ? (json['company_id'] is int
               ? json['company_id']
-              : int.tryParse(json['company_id'].toString()) ?? global_cid)
-          : global_cid,
+              : int.tryParse(json['company_id'].toString()) ?? globalCid)
+          : globalCid,
       name: json['name']?.toString(),
       dob: json['dob'] != null
           ? DateTime.tryParse(json['dob'].toString())
@@ -995,7 +995,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       setState(() => isLoading = true);
       try {
         final employee = Employee(
-          companyId: global_cid,
+          companyId: globalCid,
           name: nameController.text.trim(),
           dob: DateTime.tryParse(dobController.text),
           email: emailController.text.trim(),
