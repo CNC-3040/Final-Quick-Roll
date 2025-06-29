@@ -1600,8 +1600,8 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
     });
 
     try {
-      final url = Uri.parse('$baseURL/attendances?company_id=$globalCid');
-      debugPrint('📤 Fetching attendances for company_id: $globalCid');
+      final url = Uri.parse('$baseURL/attendances?company_id=$global_cid');
+      debugPrint('📤 Fetching attendances for company_id: $global_cid');
       final response = await http.get(url, headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',

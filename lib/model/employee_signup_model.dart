@@ -529,7 +529,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
-import 'package:quick_roll/admin/auth_service.dart';
+import 'package:quick_roll/admin/auth_service.dart' as admin_auth;
+import 'package:quick_roll/user/user_auth_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class EmployeeSignupModel extends ChangeNotifier {
@@ -561,7 +562,8 @@ class EmployeeSignupModel extends ChangeNotifier {
   }
 
   Future<void> _loadCompanyId() async {
-    final companyIdFromPrefs = await AuthService.getLoggedInUserCompanyId();
+    final companyIdFromPrefs =
+        await admin_auth.AuthService.getLoggedInUserCompanyId();
     if (companyIdFromPrefs != null) {
       companyId = companyIdFromPrefs;
       notifyListeners();

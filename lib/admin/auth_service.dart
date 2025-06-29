@@ -158,9 +158,9 @@ class AuthService {
         await prefs.setString('loggedInUserCompanyId', admin['id'].toString());
         await prefs.setString('companyData', jsonEncode(responseBody));
 
-        globalCid = admin['id'];
-        print('company id= $globalCid');
-        print('Admin global_cid: $globalCid');
+        global_cid = admin['id'];
+        print('company id= $global_cid');
+        print('Admin global_cid: $global_cid');
         print('User logged in successfully: $admin');
         return true;
       }
@@ -177,7 +177,7 @@ class AuthService {
     await prefs.remove('loggedInUserContact');
     await prefs.remove('loggedInUserCompanyId');
     await prefs.remove('companyData');
-    globalCid = 0;
+    global_cid = 0;
     print('User logged out, SharedPreferences cleared');
   }
 
