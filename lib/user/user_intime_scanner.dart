@@ -423,15 +423,56 @@ class _AttendanceScannerState extends State<AttendanceScanner> {
       String location = await _getReadableLocation();
       SharedPreferences prefs = await SharedPreferences.getInstance();
 
+      // --- 500m check logic start ---
+      double? intimeLat = prefs.getDouble('lastLatitude');
+      double? intimeLon = prefs.getDouble('lastLongitude');
+      double? actualLat = globalLatitude;
+      double? actualLon = globalLongitude;
+      String actualLocation = location;
+
+      if (intimeLat != null &&
+          intimeLon != null &&
+          actualLat != null &&
+          actualLon != null) {
+        double distance = Geolocator.distanceBetween(
+          intimeLat,
+          intimeLon,
+          actualLat,
+          actualLon,
+        );
+        print('Distance from intime location: $distance meters');
+        if (distance > 500) {
+          // User is >500m away, use actual location/address
+          List<Placemark> placemarks =
+              await placemarkFromCoordinates(actualLat, actualLon);
+          if (placemarks.isNotEmpty) {
+            Placemark place = placemarks.first;
+            actualLocation = [
+              place.street,
+              place.locality,
+              place.administrativeArea,
+              place.country
+            ]
+                .where((element) => element != null && element.isNotEmpty)
+                .join(", ");
+          }
+        } else {
+          // Use intime location/address
+          actualLat = intimeLat;
+          actualLon = intimeLon;
+          actualLocation = location;
+        }
+      }
+      // --- 500m check logic end ---
+
       Map<String, dynamic> requestData = {
         "company_id": companyId,
         "employee_id": loggedInUserId,
         "date": formattedDate,
-        "location": location,
+        "location": actualLocation,
         "mobile_model": mobileModel,
-        // 🧠 Add latitude and longitude to request data
-        "latitude": lastLatitude,
-        "longitude": lastLongitude,
+        "latitude": actualLat,
+        "longitude": actualLon,
       };
 
       // Alternate between in-time and out-time
@@ -455,26 +496,25 @@ class _AttendanceScannerState extends State<AttendanceScanner> {
       if (response.statusCode == 200) {
         setState(() {
           scannedData = 'Attendance recorded successfully!';
-          scannedLocation = location;
+          scannedLocation = actualLocation;
           lastScanDate = formattedDate;
-          // 🧠 Update latitude and longitude state
-          lastLatitude = prefs.getDouble('lastLatitude');
-          lastLongitude = prefs.getDouble('lastLongitude');
+          lastLatitude = actualLat;
+          lastLongitude = actualLon;
 
           if (!isInTimeFilled) {
             isInTimeFilled = true;
             scannedInTime = formattedDate + ' ' + formattedTime;
             scannedOutTime = null;
             isOutTimeFilled = false;
-            // Save in-time, clear out-time
             prefs.setBool('isInTimeFilled', true);
             prefs.setString('scannedInTime', scannedInTime!);
             prefs.setBool('isOutTimeFilled', false);
             prefs.remove('scannedOutTime');
+            prefs.setDouble('lastLatitude', actualLat ?? 0);
+            prefs.setDouble('lastLongitude', actualLon ?? 0);
           } else {
             isOutTimeFilled = true;
             scannedOutTime = formattedDate + ' ' + formattedTime;
-            // Save out-time
             prefs.setBool('isOutTimeFilled', true);
             prefs.setString('scannedOutTime', scannedOutTime!);
             // Reset for next cycle
@@ -482,8 +522,11 @@ class _AttendanceScannerState extends State<AttendanceScanner> {
             scannedInTime = null;
             prefs.setBool('isInTimeFilled', false);
             prefs.remove('scannedInTime');
+            // Stop posting: remove last in-time lat/lon
+            prefs.remove('lastLatitude');
+            prefs.remove('lastLongitude');
           }
-          prefs.setString('scannedLocation', location);
+          prefs.setString('scannedLocation', actualLocation);
           prefs.setString('lastScanDate', formattedDate);
         });
         ScaffoldMessenger.of(context).showSnackBar(
