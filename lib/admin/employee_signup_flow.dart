@@ -3063,7 +3063,7 @@ class EmployeeAddressScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       NoAnimationPageRoute(
-                        builder: (context) => const EmployeeDocumentsScreen(),
+                        builder: (context) => const EmployeeWorkDetailsScreen(),
                       ),
                     );
                   },
@@ -3085,6 +3085,133 @@ class EmployeeAddressScreen extends StatelessWidget {
                 onTap: () {
                   if (employeeModel.validateAddress()) {
                     employeeModel.setScreenIndex(6);
+                    Navigator.push(
+                      context,
+                      NoAnimationPageRoute(
+                        builder: (context) => const EmployeeWorkDetailsScreen(),
+                      ),
+                    );
+                  }
+                },
+                child: const NavigationArrow(isForward: true),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class EmployeeWorkDetailsScreen extends StatelessWidget {
+  const EmployeeWorkDetailsScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final employeeModel = Provider.of<EmployeeSignupModel>(context);
+    final size = MediaQuery.of(context).size;
+
+    return Scaffold(
+      backgroundColor: const Color(0xfff2f2f2),
+      resizeToAvoidBottomInset: false,
+      body: SafeArea(
+        child: Stack(
+          children: [
+            AnimatedBuilder(
+              animation: employeeModel,
+              builder: (context, child) {
+                return Positioned(
+                  top: 0,
+                  left: 0,
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 300),
+                    height: 20,
+                    width: employeeModel.getGreenStripWidth(context),
+                    color: AppColors.deepTeal,
+                  ),
+                );
+              },
+            ),
+            Positioned(
+              top: size.height * 0.15,
+              left: 0,
+              right: 0,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "Work",
+                    style: GoogleFonts.poppins(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w200,
+                      color: AppColors.myTeal,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    "Details",
+                    style: GoogleFonts.poppins(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.myTeal,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              top: size.height * 0.40,
+              left: 30,
+              right: 30,
+              child: Column(
+                children: [
+                  RoundedTextBox(
+                    hint: "Working Hours (e.g., 9AM-5PM)",
+                    initialValue: employeeModel.workingHours,
+                    errorText: employeeModel.workingHoursError,
+                    onChanged: (value) {
+                      employeeModel.setValue('workingHours', value);
+                      employeeModel.validateWorkingHours();
+                    },
+                  ),
+                  const SizedBox(height: 20),
+                  RoundedTextBox(
+                    hint: "Work Place",
+                    dropdownItems: const [
+                      'Work From Home',
+                      'Work From Office',
+                      'Field Sales', // Suggested name for sales-specific role
+                    ],
+                    initialValue: employeeModel.workPlace,
+                    errorText: employeeModel.workPlaceError,
+                    onDropdownChanged: (value) {
+                      employeeModel.setValue('workPlace', value ?? '');
+                      employeeModel.validateWorkPlace();
+                    },
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              bottom: 30,
+              left: 30,
+              child: GestureDetector(
+                onTap: () {
+                  employeeModel.setScreenIndex(5);
+                  Navigator.pop(context);
+                },
+                child: const NavigationArrow(isForward: false),
+              ),
+            ),
+            Positioned(
+              bottom: 30,
+              right: 30,
+              child: GestureDetector(
+                onTap: () {
+                  if (employeeModel.validateWorkingHours() &&
+                      employeeModel.validateWorkPlace()) {
+                    employeeModel.setScreenIndex(7);
                     Navigator.push(
                       context,
                       NoAnimationPageRoute(

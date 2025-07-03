@@ -42,6 +42,7 @@ void callbackDispatcher() {
   });
 }
 
+@pragma('vm:entry-point')
 Future<void> initializeBackgroundLocationTask() async {
   await Workmanager().initialize(
     callbackDispatcher,
