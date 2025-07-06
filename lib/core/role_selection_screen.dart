@@ -377,14 +377,14 @@ class RoleSelectionScreen extends StatelessWidget {
               ),
               SizedBox(height: height * 0.02),
               // Employee Button
-              CustomRoleButton(
-                text: 'Employee',
-                backgroundColor: AppColors.myTeal,
-                textColor: Colors.white,
-                nextScreen: NoAnimationPageRoute(
-                  builder: (context) => const Userlogin(),
-                ),
-              ),
+              // CustomRoleButton(
+              //   text: 'Employee',
+              //   backgroundColor: AppColors.myTeal,
+              //   textColor: Colors.white,
+              //   nextScreen: NoAnimationPageRoute(
+              //     builder: (context) => const Userlogin(),
+              //   ),
+              // ),
               SizedBox(height: height * 0.015),
               // Business Button
               CustomRoleButton(

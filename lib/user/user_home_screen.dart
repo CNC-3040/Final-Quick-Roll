@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:quick_roll/admin/admin_login.dart';
 import 'package:quick_roll/admin/user_registration.dart';
 import 'package:quick_roll/user/email_sender.dart' show EmailSender;
 import 'package:quick_roll/user/time_management_screen.dart';
@@ -211,7 +212,7 @@ class _HomeScreenState extends State<UserHomeScreen> {
 
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const Userlogin()),
+      MaterialPageRoute(builder: (context) => const LoginScreen()),
     );
   }
 

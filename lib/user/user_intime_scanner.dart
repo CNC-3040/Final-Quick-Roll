@@ -13,6 +13,7 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:encrypt/encrypt.dart' as encrypt;
+import 'package:flutter/services.dart';
 
 class AttendanceScanner extends StatefulWidget {
   const AttendanceScanner({super.key});
@@ -43,37 +44,38 @@ class _AttendanceScannerState extends State<AttendanceScanner> {
       'your-32-byte-secret-key-here1234'); // 32 bytes for AES-256
   static final _encrypter = encrypt.Encrypter(encrypt.AES(_key));
 
+  static const MethodChannel _deviceInfoChannel =
+      MethodChannel('quick_roll/device_info');
+
   @override
   void initState() {
     super.initState();
-    _fetchLoggedInUserId();
-    _checkAttendanceStatus();
-    _fetchMobileModel();
+    _forceFetchMobileModel().then((_) {
+      _fetchLoggedInUserId();
+      _checkAttendanceStatus();
+    });
   }
 
-  Future<void> _fetchMobileModel() async {
-    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+  /// Force and quickly fetch the mobile model using platform channels.
+  Future<void> _forceFetchMobileModel() async {
+    String model = 'Unknown';
     try {
-      if (Platform.isAndroid) {
-        AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
-        setState(() {
-          mobileModel = androidInfo.model;
-        });
-      } else if (Platform.isIOS) {
-        IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
-        setState(() {
-          mobileModel = iosInfo.utsname.machine;
-        });
+      if (Platform.isAndroid || Platform.isIOS) {
+        final String result =
+            await _deviceInfoChannel.invokeMethod('getDeviceModel');
+        model = result;
       } else {
-        setState(() {
-          mobileModel = 'Unsupported platform';
-        });
+        model = 'Unsupported platform';
       }
     } catch (e) {
-      setState(() {
-        mobileModel = 'Error fetching device model: $e';
-      });
+      model = 'Error fetching device model: $e';
     }
+    setState(() {
+      mobileModel = model;
+    });
+    // Save to SharedPreferences for background use
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('mobileModel', model);
   }
 
   Future<void> _fetchLoggedInUserId() async {

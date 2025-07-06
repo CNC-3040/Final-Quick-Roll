@@ -3,20 +3,21 @@ import 'package:flutter/services.dart';
 import 'package:quick_roll/admin/company_password_change_screen.dart';
 import 'package:quick_roll/admin/company_registration_screen.dart';
 import 'package:quick_roll/core/role_selection_screen.dart';
-import 'package:quick_roll/admin/auth_service.dart';
-import 'package:quick_roll/core/splash_screen.dart';
+import 'package:quick_roll/admin/auth_service.dart' as admin_auth;
+import 'package:quick_roll/user/user_auth_service.dart' as user_auth;
 import 'package:quick_roll/utils/admin_colors.dart';
+import 'package:quick_roll/admin/home_screen.dart';
+import 'package:quick_roll/user/user_home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../core/forgot_password_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  _AdminLoginState createState() => _AdminLoginState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _AdminLoginState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController identifierController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool _isPasswordVisible = false;
@@ -35,37 +36,75 @@ class _AdminLoginState extends State<LoginScreen> {
       _isLoading = true;
     });
 
-    bool isRegistered = await AuthService.isUserRegistered(
+    // Try company login first
+    var loginResult = await admin_auth.AuthService.isUserRegistered(
       identifierController.text,
       passwordController.text,
     );
+
+    // If company login fails, try employee login
+    if (loginResult['status'] != 'success') {
+      loginResult = await user_auth.AuthService.isUserRegistered(
+        identifierController.text,
+        passwordController.text,
+      );
+    }
 
     setState(() {
       _isLoading = false;
     });
 
-    if (isRegistered) {
+    if (loginResult['status'] == 'success') {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setBool('isLoggedIn', true);
-      await prefs.setString('role', 'Admin'); // Save role as Admin
+      await prefs.setString(
+          'loginType', loginResult['type']); // Save login type
 
-      // Save user details
-      String? userEmail = await AuthService.getLoggedInUserEmail();
-      String? userContact = await AuthService.getLoggedInUserContact();
-      String? userId = await AuthService.getLoggedInUserId();
+      if (loginResult['type'] == 'company') {
+        await prefs.setString('role', 'Admin');
+        // Navigate to HomeScreen for company
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
+        );
+      } else if (loginResult['type'] == 'employee') {
+        await prefs.setString('role', 'User');
+        // Save additional employee details
+        String? userEmail = await user_auth.AuthService.getLoggedInUserEmail();
+        String? userContact =
+            await user_auth.AuthService.getLoggedInUserContact();
+        String? userId = await user_auth.AuthService.getLoggedInUserId();
+        String? companyId = await user_auth.AuthService.getLoggedInCompanyId();
+        String? userName = await user_auth.AuthService.getLoggedInUserName();
+        String? salary = await user_auth.AuthService.getLoggedInUserSalary();
+        String? companyName =
+            await user_auth.AuthService.getLoggedInUserCompanyName();
+        String? workPlace =
+            await user_auth.AuthService.getLoggedInUserWorkPlace();
+        String? workingHours =
+            await user_auth.AuthService.getLoggedInUserWorkingHours();
 
-      await prefs.setString('loggedInUserEmail', userEmail ?? '');
-      await prefs.setString('loggedInUserContact', userContact ?? '');
-      await prefs.setString('loggedInUserId', userId ?? '');
+        await prefs.setString('loggedInUserEmail', userEmail ?? '');
+        await prefs.setString('loggedInUserContact', userContact ?? '');
+        await prefs.setString('loggedInUserId', userId ?? '');
+        await prefs.setString('loggedInUserCompanyId', companyId ?? '');
+        await prefs.setString('loggedInUserName', userName ?? '');
+        await prefs.setString('loggedInUserSalary', salary ?? '0.0');
+        await prefs.setString('loggedInUserCompanyName', companyName ?? '');
+        await prefs.setString('loggedInUserWorkPlace', workPlace ?? '');
+        await prefs.setString('loggedInUserWorkingHours', workingHours ?? '');
 
-      // Navigate to SplashScreen after successful login
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const SplashScreen()),
-      );
+        // Navigate to UserHomeScreen for employee
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const UserHomeScreen()),
+        );
+      }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Invalid credentials. Please try again.")),
+        SnackBar(
+            content: Text(loginResult['message'] ??
+                "Invalid credentials. Please try again.")),
       );
     }
   }
@@ -90,7 +129,7 @@ class _AdminLoginState extends State<LoginScreen> {
           },
         ),
         title: Text(
-          'Administrator login',
+          'Login',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: AppColors.white,
@@ -121,7 +160,7 @@ class _AdminLoginState extends State<LoginScreen> {
                       ),
                       const SizedBox(height: 20),
                       const Text(
-                        'Login to Your Admin Account',
+                        'Login to Your Account',
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
@@ -137,7 +176,7 @@ class _AdminLoginState extends State<LoginScreen> {
                           FilteringTextInputFormatter.deny(RegExp(r'\s')),
                         ],
                         decoration: const InputDecoration(
-                          labelText: 'Username or Email',
+                          labelText: 'Username, Email or Contact',
                           labelStyle: TextStyle(color: AppColors.charcoalGray),
                           border: OutlineInputBorder(
                             borderSide:
